@@ -14,3 +14,4 @@
 - CSS3
 - JavaScript Vanilla
 - LocalStorage pour simuler la base de données
+- utilisation de AniList API https://github.com/AniList/ApiV2-GraphQL-Docs
