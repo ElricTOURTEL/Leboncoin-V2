@@ -68,7 +68,7 @@ function displayAnime(animes) {
     img.src = anime.coverImage.large;
     img.classList.add("anime--container__image");
 
-    
+
     animeDiv.appendChild(animeCard);
     animeCard.appendChild(title);
     animeCard.appendChild(img);
@@ -79,3 +79,5 @@ function displayAnime(animes) {
   });
   document.body.appendChild(animeDiv);
 }
+
+//tentative de pull request 
