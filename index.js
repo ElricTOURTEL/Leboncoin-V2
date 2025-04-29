@@ -1,21 +1,6 @@
 console.log("exo-7");
 
-console.log(jsonDatas);
-let translation = {
-    "car": "voiture",
-    "house": "maison",
-    "game": "jeu",
-    "videoGame": "jeu vidéo",
-    "show": "spectacle"
-};
 
-for (let i = 0; i < jsonDatas.length; i++) {
-    // console.log(jsonDatas[i]);
-    // console.log(jsonDatas[i].type);
-    let type = jsonDatas[i].type;
-    jsonDatas[i].translatedType = translation[type];
-}
-console.log(jsonDatas);
 
 let articlescontainer = document.getElementById("articles-container");
 

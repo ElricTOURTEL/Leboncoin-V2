@@ -12,5 +12,6 @@ https://www.youtube.com/watch?v=vQc3EmFCWRw
 
 https://anilist.co/graphiql?
 
+title: romaji
 Status: finished
 AverageScore > 80

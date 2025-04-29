@@ -1,6 +1,6 @@
 const query = `
-  query {
-    Page(page: 1, perPage: 20) {
+  query ($page: Int, $perPage: Int) {
+    Page(page: $page, perPage: $perPage) {
       media(type: ANIME) {
         id
         title {
@@ -8,7 +8,6 @@ const query = `
           english
           native
         }
-        description
         episodes
         genres
         averageScore
@@ -20,85 +19,63 @@ const query = `
   }
 `;
 
-// Appel API avec fetch
+
+const variables = {
+  page: 1,
+  perPage: 20
+};
+
 fetch('https://graphql.anilist.co', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    },
-    body: JSON.stringify({ query })
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  body: JSON.stringify({
+    query: query,
+    variables: variables
+  })
 })
-    .then(response => response.json())
-    .then(data => {
-        if (data.errors) {
-            console.error('Erreur GraphQL:', data.errors);
-            document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
-        } else if (data.data) {
-            const animes = data.data.Page.media;
-            console.log('Résultat AniList:', data.data.Page.media); // ici on va dans Page > media
-            animes.forEach(anime => {
-                const animeDiv = document.createElement('div');
+.then(response => response.json())
+.then(data => {
+  if (data.errors) {
+    console.error('Erreur GraphQL:', data.errors);
+    document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
+  } else if (data.data) {
+    displayAnime(data.data.Page.media); // On passe la liste des animes à la fonction
+  }
+})
+.catch(error => {
+  console.error('Erreur Fetch:', error);
+  document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
+});
 
-                const title = document.createElement('h2');
-                title.textContent = anime.title.english || anime.title.romaji;
-                title.classList.add("anime-title");
-
-                const img = document.createElement('img');
-                img.src = anime.coverImage.large;
-                img.classList.add("img-anime");
-
-                const description = document.createElement('p');
-                description.textContent = anime.description ? anime.description.substring(0, 200) + '...' : 'Pas de description disponible.';
-                description.classList.add("")
-
-                animeDiv.appendChild(title);
-                animeDiv.appendChild(img);
-                animeDiv.appendChild(description);
-
-                document.body.appendChild(animeDiv);
-            });
-        }
-    })
+function displayAnime(animes) {
+  console.log('Résultat AniList:', animes);
+  const animeDiv = document.createElement('div');
+  animeDiv.classList.add("anime--container");
 
 
+  animes.forEach(anime => {
+    const animeCard= document.createElement('div');
+    animeCard.classList.add("anime--container__card");
+
+    const title = document.createElement('h2');
+    title.textContent = anime.title.english || anime.title.romaji;
+    title.classList.add("anime--container__title");
+
+    const img = document.createElement('img');
+    img.src = anime.coverImage.large;
+    img.classList.add("anime--container__image");
+
+    
+    animeDiv.appendChild(animeCard);
+    animeCard.appendChild(title);
+    animeCard.appendChild(img);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    .catch(error => {
-        console.error('Erreur AniList:', error);
-    });
+    
+    
+  });
+  document.body.appendChild(animeDiv);
+}
