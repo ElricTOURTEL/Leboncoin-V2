@@ -21,7 +21,7 @@ const query = `
 
 
 const variables = {
-  page: 1,
+  page: $page,
   perPage: 20
 };
 
