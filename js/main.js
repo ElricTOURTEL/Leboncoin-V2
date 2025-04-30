@@ -31,37 +31,3 @@ loadButton.addEventListener('click', () => {
 
 fetchPage(1);
 
-/* async function fetchPageAnimes(page=1, perPage=20){
-  try{
-    const response = await fetch('https://graphql.anilist.co', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-          query ($page: Int, $perPage: Int) {
-            Page(page: $page, perPage: $perPage) {
-              media(type: ANIME) {
-                id
-                title {
-                  romaji
-                  english
-                  native
-                }
-                episodes
-                genres
-                averageScore
-                coverImage {
-                  large
-                }
-              }
-            }
-          }
-        `,
-        variables: { page, perPage }
-      })
-    });
-  }
-}*/
