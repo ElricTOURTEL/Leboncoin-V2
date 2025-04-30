@@ -9,11 +9,40 @@
 <body>
   <div class="container">
     <header>
-      <h1 class="main-title">Liste des Articles</h1>
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo anime">
+        <div class="site-title">AnimeVerse</div>
+      </div>
+      <div class="dropdown">
+        <button onclick="myDropdown()" class="dropButton">Menu</button>
+        <div id="dropdown--header" class="container--dropdown__bloc">
+          <a href="index.html">Feed</a>
+          <a href="#">Gallery</a>
+          <a href="#">Games</a>
+        </div>
+      </div>
     </header>
-
+    <div class="input-control">
+      <label for="search">
+        Recherche
+      </label>
+      <input type="text" id="search" placeholder="Rechercher un produit">
+      <button id="searchButton">Submit</button>
+      <input type="checkbox" id="check-stock">
+      <label for="check-stock">Disponible ?</label>
+      <input type="checkbox" id="sort-article">
+      <label for="sort-article">Trier nom</label>
+      <input type="checkbox" id="sort-article-reverse">
+      <label for="sort-article-reverse">Trier nom decroissant</label>
+      <input type="checkbox" id="sort-price">
+      <label for="sort-price">Trier du - cher au + cher</label>
+      <input type="checkbox" id="sort-price-reverse">
+      <label for="sort-price-reverse">Trier du + cher au - cher</label>
+    </div>
+  </div>
   <script src="js/main.js"></script>
-  <script src=""></script>
+  <script src="js/feed.js"></script>
+  <script src="js/navbar.js"></script>
 </body>
 
 
