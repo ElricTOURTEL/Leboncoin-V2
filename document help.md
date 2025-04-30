@@ -15,3 +15,8 @@ https://anilist.co/graphiql?
 title: romaji
 Status: finished
 AverageScore > 80
+
+## Formulaire ajout anime
+
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects
+

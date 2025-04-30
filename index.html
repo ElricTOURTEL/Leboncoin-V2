@@ -22,26 +22,27 @@
         </div>
       </div>
     </header>
-    <div class="input-control">
-      <label for="search">
-        Recherche
-      </label>
-      <input type="text" id="search" placeholder="Rechercher un produit">
-      <button id="searchButton">Submit</button>
-      <input type="checkbox" id="check-stock">
-      <label for="check-stock">Disponible ?</label>
-      <input type="checkbox" id="sort-article">
-      <label for="sort-article">Trier nom</label>
-      <input type="checkbox" id="sort-article-reverse">
-      <label for="sort-article-reverse">Trier nom decroissant</label>
-      <input type="checkbox" id="sort-price">
-      <label for="sort-price">Trier du - cher au + cher</label>
-      <input type="checkbox" id="sort-price-reverse">
-      <label for="sort-price-reverse">Trier du + cher au - cher</label>
-    </div>
-  </div>
+    <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
+      <p>
+        <label
+          >Nom de l'anime:
+          <input
+            type="text"
+            name="title"
+            autocomplete="on"
+            placeholder="Title"
+            maxlength="64" 
+            required/>
+        </label>
+      </p>
+      <p>
+        <input type="submit" value="Stash the file!" />
+      </p>
+    </form>
+    
   <script src="js/feed.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/ad-detail.js"></script>
 </body>
 
 
