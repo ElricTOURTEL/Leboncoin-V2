@@ -122,3 +122,16 @@ header {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+#container--control{
+  text-align: right;
+}
+.container--search{
+  display: flex;
+  justify-content: space-evenly;
+}
+.container--search__input{
+  align-content: center;
+}
+
+.container {
+}

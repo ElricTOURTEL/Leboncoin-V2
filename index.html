@@ -22,27 +22,26 @@
         </div>
       </div>
     </header>
-    <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
-      <p>
-        <label
-          >Nom de l'anime:
-          <input
-            type="text"
-            name="title"
-            autocomplete="on"
-            placeholder="Title"
-            maxlength="64" 
-            required/>
-        </label>
-      </p>
-    </form>
-    <button class="disposition" id="container--button__grid">Mosaique</button>
-    <button class="disposition" id="container--button__list">Version grande</button>
-  <script src="js/main.js"></script>
-  <script src="js/feed.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/ad-detail.js"></script>
-  <script src="js/mosaic.js" defer></script>
+    <div class="container--search">
+      <div class="container--search__input">
+        <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
+          <p>
+            <label>Nom de l'anime:
+              <input type="text" name="title" autocomplete="on" placeholder="Title" maxlength="64" required />
+            </label>
+          </p>
+        </form>
+      </div>
+    </div>
+    <div class="container--mosaic">
+      <button class="disposition" id="container--button__grid">Mosaique</button>
+      <button class="disposition" id="container--button__list">Version grande</button>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/feed.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/ad-detail.js"></script>
+    <script src="js/mosaic.js" defer></script>
 </body>
 
 

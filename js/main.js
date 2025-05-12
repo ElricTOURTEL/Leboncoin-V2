@@ -14,20 +14,21 @@ loadButton.style.marginLeft = '1em';
 
 // Ajout au body
 const controlsDiv = document.createElement('div');
-controlsDiv.style.textAlign = 'center';
+controlsDiv.id="container--control";
 controlsDiv.appendChild(pageSelector);
 controlsDiv.appendChild(loadButton);
-document.body.prepend(controlsDiv);
+document.querySelector('.container--search').append(controlsDiv);
 
 
 loadButton.addEventListener('click', () => {
   const page = parseInt(pageSelector.value);
+  let animeDiv = document.getElementById('container--anime');
+  animeDiv = document.getElementById('container--anime');
+  animeDiv.innerHTML="";
   if (page > 0) {
     fetchPage(page);
   } else {
     alert("Numéro de page invalide");
   }
 });
-
-fetchPage(1);
 
