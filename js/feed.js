@@ -52,18 +52,39 @@ function fetchPage(page) {
     });
 }
 
+
+
+function changedisplayAnime() {
+  const btnGrid = document.getElementById('container--button__grid');
+  const btnList = document.getElementById('container--button__list');
+  const animeDiv = document.getElementById('container--anime');
+  if (!animeDiv){
+      console.log("container--anime introuvable");
+  }
+  btnGrid.addEventListener('click', () => {
+    animeDiv.classList.remove("anime--container__list");
+    animeDiv.classList.add("anime--container__grid");
+    console.log("ajout de grid");
+  });
+  btnList.addEventListener("click", () => {
+    animeDiv.classList.remove("anime--container__grid");
+    animeDiv.classList.add("anime--container__list");
+    console.log("ajout de list");
+  });
+}
+
 function displayAnime(animes) {
   const oldContainer = document.querySelector('.anime--container');
   if(oldContainer) oldContainer.remove();
   console.log('Résultat AniList:', animes);
   const animeDiv = document.createElement('div');
-  animeDiv.classList.add("anime--container");
+  animeDiv.classList.add("anime--container__grid");
+  animeDiv.id="container--anime";
 
 
   animes.forEach(anime => {
     const animeCard = document.createElement('div');
     animeCard.classList.add("anime--container__card");
-
     const title = document.createElement('h2');
     title.textContent = anime.title.english || anime.title.romaji;
     title.classList.add("anime--container__title");
@@ -76,15 +97,15 @@ function displayAnime(animes) {
     animeDiv.appendChild(animeCard);
     animeCard.appendChild(title);
     animeCard.appendChild(img);
-
-
-
-
   });
   document.body.appendChild(animeDiv);
+  changedisplayAnime();
 }
 
 fetchPage(1);
+
+
+
 
 
 //tentative de pull request 
