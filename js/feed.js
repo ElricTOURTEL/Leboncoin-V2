@@ -1,4 +1,5 @@
-const query = `
+function fetchPage(page) {
+  const query = `
   query ($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
       media(type: ANIME) {
@@ -20,35 +21,36 @@ const query = `
 `;
 
 
-const variables = {
-  page: 1,
-  perPage: 20
-};
+  const variables = {
+    page: page,
+    perPage: 20
+  };
 
-fetch('https://graphql.anilist.co', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
-  body: JSON.stringify({
-    query: query,
-    variables: variables
+  fetch('https://graphql.anilist.co', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: variables
+    })
   })
-})
-.then(response => response.json())
-.then(data => {
-  if (data.errors) {
-    console.error('Erreur GraphQL:', data.errors);
-    document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
-  } else if (data.data) {
-    displayAnime(data.data.Page.media); // On passe la liste des animes à la fonction
-  }
-})
-.catch(error => {
-  console.error('Erreur Fetch:', error);
-  document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
-});
+    .then(response => response.json())
+    .then(data => {
+      if (data.errors) {
+        console.error('Erreur GraphQL:', data.errors);
+        document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
+      } else if (data.data) {
+        displayAnime(data.data.Page.media); // On passe la liste des animes à la fonction
+      }
+    })
+    .catch(error => {
+      console.error('Erreur Fetch:', error);
+      document.body.innerHTML = "<h2>Erreur de chargement.</h2>";
+    });
+}
 
 
 
@@ -72,6 +74,8 @@ function changedisplayAnime() {
 }
 
 function displayAnime(animes) {
+  const oldContainer = document.querySelector('.anime--container');
+  if(oldContainer) oldContainer.remove();
   console.log('Résultat AniList:', animes);
   const animeDiv = document.createElement('div');
   animeDiv.classList.add("anime--container__grid");
@@ -79,7 +83,7 @@ function displayAnime(animes) {
 
 
   animes.forEach(anime => {
-    const animeCard= document.createElement('div');
+    const animeCard = document.createElement('div');
     animeCard.classList.add("anime--container__card");
     const title = document.createElement('h2');
     title.textContent = anime.title.english || anime.title.romaji;
@@ -98,6 +102,7 @@ function displayAnime(animes) {
   changedisplayAnime();
 }
 
+fetchPage(1);
 
 
 
