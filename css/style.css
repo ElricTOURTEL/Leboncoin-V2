@@ -4,27 +4,15 @@ body {
   margin: 0;
 }
 
-.anime--container{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  gap: 2em;
 
-}
 .anime--container__card{
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   padding: 1em;
-}
-
-
-.anime--container > div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -112,4 +100,25 @@ header {
 .dropdown {
   position: relative;
   float: right;
+}
+
+.anime--container__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  gap: 2em;
+}
+.anime--container__list{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+.disposition {
+  margin: 0.5em;
+}
+
+.anime--container__grid > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

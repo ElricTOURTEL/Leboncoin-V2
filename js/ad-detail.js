@@ -16,6 +16,7 @@ form.addEventListener("submit", (event) => {
 
     localStorage.setItem("AnimeList", JSON.stringify(animeList));
     console.log(animeList);
+    displayNewAnime();
     form.reset();
 });
 
@@ -24,11 +25,13 @@ function displayNewAnime() {
     newAnimeDiv.classList.add("anime--container");
 
     for (let i = 0; i < localStorage.length; i++) {
-
+        const animeCard = document.createElement('div');
         const title = document.createElement('h2');
-        title.textContent = animeList.title[i];
+        title.textContent = anime.title[i];
         title.classList.add("anime--container__title");
 
-
+        newAnimeDiv.appendChild(animeCard);
+        animeCard.appendChild(title);
     }
+    document.body.appendChild(newAnimeDiv);
 }
