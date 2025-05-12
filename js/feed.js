@@ -75,11 +75,18 @@ function changedisplayAnime() {
 
 function displayAnime(animes) {
   const oldContainer = document.querySelector('.anime--container');
+  let animeDiv = document.getElementById('container--anime');
   if(oldContainer) oldContainer.remove();
   console.log('Résultat AniList:', animes);
-  const animeDiv = document.createElement('div');
-  animeDiv.classList.add("anime--container__grid");
-  animeDiv.id="container--anime";
+  if(!animeDiv){
+    animeDiv = document.createElement('div');
+    animeDiv.classList.add("anime--container__grid");
+    animeDiv.id="container--anime";
+    document.body.appendChild(animeDiv);
+  } else{
+    animeDiv.innerHTML="";
+  }
+ 
 
 
   animes.forEach(anime => {
@@ -98,11 +105,11 @@ function displayAnime(animes) {
     animeCard.appendChild(title);
     animeCard.appendChild(img);
   });
-  document.body.appendChild(animeDiv);
   changedisplayAnime();
-}
 
+}
 fetchPage(1);
+
 
 
 
