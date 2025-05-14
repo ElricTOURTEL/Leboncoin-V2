@@ -5,18 +5,26 @@ fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
   if (!file) return;
 
-  // Créer une URL temporaire pour le fichier
   const fileURL = URL.createObjectURL(file);
 
-  // Effacer l'aperçu précédent
-  preview.innerHTML = '';
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("image-wrapper");
 
-  // Créer un élément pour afficher le fichier (ici image)
   const img = document.createElement("img");
-  img.classList.add('anime--container__image');
   img.src = fileURL;
-  img.style.maxWidth = "100%";
   img.alt = file.name;
+  img.classList.add("image-preview");
 
-  preview.appendChild(img);
+  const delet = document.createElement("p");
+  delet.classList.add("delete-text");
+  delet.textContent = "Supprimer";
+
+  delet.addEventListener("click", () => {
+    preview.innerHTML = ''; // Supprimer l’image
+    fileInput.value = '';   // Réinitialiser le champ fichier
+  });
+
+  wrapper.appendChild(delet);
+  wrapper.appendChild(img);
+  preview.appendChild(wrapper);
 });

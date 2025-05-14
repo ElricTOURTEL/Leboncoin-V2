@@ -17,7 +17,7 @@
                 <button onclick="myDropdown()" class="dropButton">Menu</button>
                 <div id="dropdown--header" class="container--dropdown__bloc">
                     <a href="index.html">Feed</a>
-                    <a href="#">Gallery</a>
+                    <a href="gallery.html">Gallery</a>
                     <a href="#">Games</a>
                 </div>
             </div>
@@ -26,7 +26,24 @@
             <input type="file" id="fileInput" accept="image/*">
         </form>
         <div id="preview"></div>
+        <div class="container--search">
+            <div class="container--search__input">
+                <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
+                    <p>
+                        <label>Nom de l'anime:
+                            <input type="text" name="title" autocomplete="on" placeholder="Title" maxlength="64"
+                                required />
+                        </label>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="container--mosaic">
+            <button class="disposition" id="container--button__grid">Mosaique</button>
+            <button class="disposition" id="container--button__list">Version grande</button>
+        </div>
     </div>
+    <script src="js/feed.js"></script>
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/ad-detail.js"></script>
